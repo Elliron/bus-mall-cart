@@ -43,26 +43,34 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
-  var thing = document.getElementById('items').value
+  var thing = document.getElementById('items')
   var itemName = thing.value
-  console.log(itemName);
   // TODO: get the quantity
   var quantity = document.getElementById('quantity').value;
-  console.log(quantity);
   // TODO: using those, add one item to the Cart
   cart.addItem(itemName, quantity);
-  // create another div
-  // give that div product info: itemName and qty
-  // append to parent/dom
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() { }
+// TODO: Update the cart count in the header nav with the number of items in the Cart // Probably fine???
+function updateCounter() {
+  var itemCount = document.getElementById('itemCount');
+  itemCount.textContent = `You have ${cart.items.length} items in your cart.`;
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
-function updateCartPreview() {
+function updateCartPreview(item) {
   // TODO: Get the item and quantity from the form
+  console.log(cart);
   var cartOutput = document.getElementById('cartContents');
+  // create another div
+  cartOutput.innerHTML = '';
+  for (var i = 0; i < cart.items.length; i++) {
+    var anotherDiv = document.createElement('div');
+    // give that div product info: itemName and qty
+    anotherDiv.textContent = `${cart.items[i].product} : ${cart.items[i].quantity}`
+    // append to parent/dom
+    cartOutput.appendChild(anotherDiv);
+  }
   // TODO: Add a new element to the cartContents div with that information
 }
 
