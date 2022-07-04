@@ -3,17 +3,17 @@
 'use strict';
 
 // Set up an empty cart for use on this page.
-var cart = new Cart([]);
+let cart = new Cart([]);
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
-  var selectElement = document.getElementById('items');
-  for (var i in Product.allProducts) {
+  let selectElement = document.getElementById('items');
+  for (let i in Product.allProducts) {
     // create element
-    var optionElement = document.createElement('option');
+    let optionElement = document.createElement('option');
     // give it content
     optionElement.textContent = Product.allProducts[i].name;
     // give it a value attribute
@@ -43,17 +43,17 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
-  var thing = document.getElementById('items')
-  var itemName = thing.value
+  let thing = document.getElementById('items')
+  let itemName = thing.value
   // TODO: get the quantity
-  var quantity = document.getElementById('quantity').value;
+  let quantity = document.getElementById('quantity').value;
   // TODO: using those, add one item to the Cart
   cart.addItem(itemName, quantity);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart // Probably fine???
 function updateCounter() {
-  var itemCount = document.getElementById('itemCount');
+  let itemCount = document.getElementById('itemCount');
   itemCount.textContent = `You have ${cart.items.length} items in your cart.`;
 }
 
@@ -61,11 +61,11 @@ function updateCounter() {
 function updateCartPreview(item) {
   // TODO: Get the item and quantity from the form
   console.log(cart);
-  var cartOutput = document.getElementById('cartContents');
+  let cartOutput = document.getElementById('cartContents');
   // create another div
   cartOutput.innerHTML = '';
-  for (var i = 0; i < cart.items.length; i++) {
-    var anotherDiv = document.createElement('div');
+  for (let i = 0; i < cart.items.length; i++) {
+    let anotherDiv = document.createElement('div');
     // give that div product info: itemName and qty
     anotherDiv.textContent = `${cart.items[i].product} : ${cart.items[i].quantity}`
     // append to parent/dom
@@ -77,7 +77,7 @@ function updateCartPreview(item) {
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
 // Call that handleSubmit method above and kick off the whole process
-var catalogForm = document.getElementById('catalog');
+let catalogForm = document.getElementById('catalog');
 catalogForm.addEventListener('submit', handleSubmit);
 
 // Before anything else of value can happen, we need to fill in the select

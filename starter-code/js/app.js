@@ -1,14 +1,14 @@
 'use strict';
 
 // Cart constructor.
-var Cart = function(items) {
+let Cart = function(items) {
   // this.items is an array of CartItem instances.
   this.items = items;
 };
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
-  var newItem = new CartItem(product, quantity);
+  let newItem = new CartItem(product, quantity);
   this.items.push(newItem);
 };
 
@@ -23,13 +23,13 @@ Cart.prototype.removeItem = function(product, quantity) {
   this.CartItem(product, quantity)
 };
 
-var CartItem = function(product, quantity) {
+let CartItem = function(product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
 // Product contructor.
-var Product = function(filePath, name) {
+let Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;
   Product.allProducts.push(this);
